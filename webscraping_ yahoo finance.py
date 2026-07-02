@@ -36,11 +36,13 @@ for ticker, name in companies.items():
        net_income = financials.loc["Net Income", latest_col] if "Net Income" in financials.index else 'N/A'
 
        all_data= { 
-            "Comapany_Name":ticker,
+            "Comapany_Name":name,
+            "Ticker":ticker,
            "year":actual_year,
            "Full_Time_Eployment":employee_count,
            "Total_Revenue":total_revenue,
            "Gross_Profit":gross_profit,
+           "Operating_Income":operating_income,
            "Net_Income":net_income}
 
        empty_List.append(all_data)
@@ -48,7 +50,7 @@ time.sleep(1.5)
 print("Scrap Done")
 if len(empty_List) > 0:  
    df_raw = pd.DataFrame(empty_List)
-   df_raw.to_csv("Raw_Data_Company.csv", index=False, encoding='utf-8')
+   df_raw.to_csv("raw_data_company.csv", index=False, encoding='utf-8')
    print("Done")
 
 
